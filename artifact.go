@@ -39,7 +39,7 @@ func (a ArtifactUpload) Apply(args []string) {
 	e = writer.Close()
 	Check(e == nil, "failed to close file", e)
 
-	request := a.client.POST("/v2/artifacts"+url.QueryEscape(path), body)
+	request := a.client.POST("/v2/artifacts"+path, body)
 	request.Header.Set("Content-Type", writer.FormDataContentType())
 
 	response, e := a.client.Do(request)
